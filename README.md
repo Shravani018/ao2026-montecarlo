@@ -20,28 +20,26 @@ The current stage focuses on building a **clean, hard-court–specific dataset**
 ## ✅ Work Completed So Far
 
 ### 📥 Data Collection
-- Combined ATP match data from **2017–2025** into a unified dataset.
+- Combined ATP match data from **2017–2024** into a unified dataset.
 - Standardized columns and formats across seasons.
 
 ### 🏟️ Surface Filtering
 - Filtered matches to **hard courts only**, aligning with Australian Open conditions.
 
-### 🧹 Data Cleaning & Preparation
-- Selected features relevant to match outcome modeling:
-  - Tournament metadata
-  - Match dates
-  - Player names
-  - Rankings and seeds
-  - Match results
-- Converted tournament dates to proper datetime format.
-- Handled missing or inconsistent ranking values using capped imputation.
+## 🔍 Exploratory Data Analysis (EDA)
 
-### 🔍 Exploratory Data Analysis (EDA)
-- Inspected dataset structure and data types.
-- Sampled match records to validate correctness.
-- Examined ranking distributions and match frequency.
-- Verified surface filtering and tournament relevance.
+### 🧹 Data Cleaning
+- Consolidated multi-season ATP match data
+- Parsed tournament dates and standardized formats
+- Normalized seed and entry fields
+- Forward-filled missing player rankings
 
+### 🧠 Feature Engineering
+- Constructed continuous ranking histories for winners and losers
+- Encoded unseeded players explicitly
+
+### 📊 Visualization
+- Generated multiple exploratory plots to assess ranking distributions and data coverage.
 ---
 
 ## 🚧 Current Project Status
@@ -62,8 +60,7 @@ The current stage focuses on building a **clean, hard-court–specific dataset**
 ---
 
 ## ⚠️ Disclaimer
-This project is **exploratory and probabilistic** in nature.  
-All outputs represent **simulated likelihoods**, not deterministic predictions.
+All results will be **probabilistic simulations**, not deterministic predictions.
 
 ---
 
