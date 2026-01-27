@@ -1,70 +1,66 @@
-# 🏆 AO2026-MonteCarlo  
-**🎾 Monte Carlo Prediction of the 2026 Australian Open Champion**
+# Tennis Match Outcome Modeling with Elo & Monte Carlo 🎾
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Model-Elo%20Rating-blue" />
+  <img src="https://img.shields.io/badge/Focus-Probabilistic%20Modeling-success" />
+  <img src="https://img.shields.io/badge/Evaluation-Calibration%20%26%20LogLoss-informational" />
+  <img src="https://img.shields.io/badge/Interface-Streamlit-lightgrey" />
+</p>
+
+Probabilistic modeling pipeline for tennis match outcomes using an Elo rating framework with surface-specific adjustments and Monte Carlo simulation. The project focuses on calibrated probability estimates, uncertainty analysis, and transparent evaluation.
 
 ---
 
-## 📌 Overview
-This project estimates each player’s probability of winning the **2026 Australian Open** using **Monte Carlo simulation** based on historical **ATP match-level data**.
+## Visual overview
 
-The current stage focuses on building a **clean, hard-court–specific dataset** that accurately reflects Australian Open conditions and is suitable for probabilistic modeling.
+<p align="center">
+  <img src="Streamlit_Demo.gif" width="800" />
+</p>
 
----
-
-## 📊 Data Source
-- 🎾 ATP match-level data (2017–2024)
-- 🌐 Public dataset maintained by Jeff Sackmann
-- 📁 Yearly match files: [https://github.com/JeffSackmann/tennis_atp]
+*Streamlit dashboard for exploring Elo-based match probabilities, Monte Carlo convergence, and tournament simulations.*
 
 ---
 
-## ✅ Work Completed So Far
+## Overview
 
-### 📥 Data Collection
-- Combined ATP match data from **2017–2024** into a unified dataset.
-- Standardized columns and formats across seasons.
-
-### 🏟️ Surface Filtering
-- Filtered matches to **hard courts only**, aligning with Australian Open conditions.
-
-## 🔍 Exploratory Data Analysis (EDA)
-
-### 🧹 Data Cleaning
-- Consolidated multi-season ATP match data
-- Parsed tournament dates and standardized formats
-- Normalized seed and entry fields
-- Forward-filled missing player rankings
-
-### 🧠 Feature Engineering
-- Constructed continuous ranking histories for winners and losers
-- Encoded unseeded players explicitly
-
-### 📊 Visualization
-- Generated multiple exploratory plots to assess ranking distributions and data coverage.
----
-
-## 🚧 Current Project Status
-- ✅ Historical ATP data collated  
-- ✅ Hard-court–specific dataset prepared  
-- ✅ Cleaned and structured data ready for modeling  
-- ⏳ Win probability modeling  
-- ⏳ Monte Carlo tournament simulation  
+- Player skill is represented as a latent Elo rating learned sequentially from historical match data.
+- Both global and surface-specific ratings (Hard, Clay, Grass) are maintained to capture surface-dependent performance.
+- Match win probabilities are computed using the standard Elo logistic function with a tunable surface-blending parameter.
+- Monte Carlo simulation is used to analyze sampling variability and outcome dispersion across repeated matches and tournaments.
+- Model performance is evaluated on a held-out test set using proper scoring rules and calibration diagnostics.
 
 ---
 
-## 🔜 Next Steps
-- 📈 Develop match-level win probability models (ranking-based / Elo-style).
-- 🔁 Simulate full Australian Open tournament draws using Monte Carlo methods.
-- 🧮 Aggregate simulation outputs into player win probabilities.
-- 📊 Visualize and interpret outcome distributions.
+## Assumptions
+
+- Match outcomes are modeled as independent Bernoulli trials conditional on the predicted win probability.
+- Player strength is summarized by a single scalar Elo rating per context.
+- A fixed K-factor is applied uniformly across players, surfaces, and time.
+- Surface effects are modeled via separate Elo processes rather than explicit match-level covariates.
+- Monte Carlo results reflect sampling variability given fixed probabilities, not uncertainty in Elo parameter estimates.
+
+These assumptions prioritize interpretability, reproducibility, and analytical clarity.
 
 ---
 
-## ⚠️ Disclaimer
-All results will be **probabilistic simulations**, not deterministic predictions.
+## Extensions
+
+Potential extensions include:
+
+- Time-decay or recent-form weighting
+- Bayesian Elo formulations to represent rating uncertainty
+- Explicit treatment of match format (best-of-3 vs best-of-5)
+- Integration of contextual factors such as injuries, rest, or head-to-head effects
 
 ---
 
-## 👤 Author
-Built as a personal data science project exploring **sports analytics and simulation modeling**.
+## Disclaimer
 
+All outputs produced by this project are **probabilistic simulations**, not deterministic predictions.  
+The model is intended for analytical and exploratory purposes.
 
+---
+
+## Author
+
+Built as a personal data science project exploring **sports analytics and probabilistic modeling**.
